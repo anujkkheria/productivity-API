@@ -14,8 +14,11 @@
     "nodemon": "^3.1.10"
   },
   "dependencies": {
+    "bcryptjs": "^3.0.2",
+    "dotenv": "^16.5.0",
     "express": "^5.1.0",
     "module-alias": "^2.2.3",
+    "pg": "^8.15.6",
     "winston": "^3.17.0"
   }
 }
