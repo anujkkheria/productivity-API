@@ -21,8 +21,8 @@ export const Signup = async (req, res, next) => {
 };
 export const Login = async (req, res, next) => {
   const { email, password } = req.body;
-  if (!email) {
-    return res.status(400).send({ message: "bad request check the inputs" });
+  if (!email || !password) {
+    return res.status(400).send({ message: "check the inputs" });
   }
   const result = await pool.query(queries.login, [email]);
   console.log(!result.rows);
