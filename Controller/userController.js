@@ -1,6 +1,7 @@
 import bcrypt from "bcryptjs";
 import "dotenv/config";
-import { pool, consoleTheCOnfig } from "../utils/DBConnection.js";
+import { pool } from "../utils/DBConnection.js";
+import { AppError } from "../utils/globalError.js";
 
 const queries = {
   getall: `select username,email,role from users`,
@@ -22,16 +23,18 @@ export const Signup = async (req, res, next) => {
 export const Login = async (req, res, next) => {
   const { email, password } = req.body;
   if (!email || !password) {
-    return res.status(400).send({ message: "check the inputs" });
+    next(new AppError("check the inputs", 400));
   }
   const result = await pool.query(queries.login, [email]);
-  console.log(!result.rows);
+  if (!result.rows) {
+    next(new AppError("invalid credential", 404));
+  }
   const isPassword = await bcrypt.compare(
     password,
     result.rows[0].password_hash
   );
   if (!isPassword) {
-    return res.status(404).send();
+    next(new AppError("invalid credential"));
   }
   const { password_hash, ...details } = result.rows[0];
   return res.status(200).send({
