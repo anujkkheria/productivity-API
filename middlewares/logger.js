@@ -64,6 +64,14 @@ export function logger(req, res, next) {
   createNewLogger.info(
     `${actionType}/${action} - Request: ${req.method} ${url}`
   );
-
+  let childLogger = new Windston()
+  childLogger.context({
+    method: "GET",
+    url: "/"
+  })
+  const start = Date.now()
   next();
+  const elapsedtime = Date.now() - start /1000 // ms
+  // log based on res.status code
+  
 }

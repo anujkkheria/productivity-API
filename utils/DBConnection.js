@@ -11,4 +11,6 @@ const config = {
 };
 export const pool = new Pool(config);
 
+export const dbInit = async() => pool.connect()
+
 export const consoleTheCOnfig = () => console.log(config);
