@@ -18,25 +18,30 @@ export const Signup = async (req, res, next) => {
     passwordHash,
     role,
   ]);
-  res.send({ message: "success", details: result.rows });
+  return res.send({ message: "success", details: result.rows });
 };
+
 export const Login = async (req, res, next) => {
   const { email, password } = req.body;
   if (!email || !password) {
-    next(new AppError("check the inputs", 400));
+    return next(new AppError("check the inputs", 400));
   }
+  console.log(email);
+
   const result = await pool.query(queries.login, [email]);
-  if (!result.rows) {
-    next(new AppError("invalid credential", 404));
+
+  if (result.rowCount < 1) {
+    return next(new AppError("invalid credential", 404));
   }
+
+  const { password_hash, ...details } = result.rows[0];
   const isPassword = await bcrypt.compare(
     password,
     result.rows[0].password_hash
   );
   if (!isPassword) {
-    next(new AppError("invalid credential"));
+    return next(new AppError("invalid credential"));
   }
-  const { password_hash, ...details } = result.rows[0];
   return res.status(200).send({
     message: "success",
     details: details,

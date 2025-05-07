@@ -1,5 +1,6 @@
 import express from "express";
 import { logger } from "./middlewares/logger.js";
+import { ErrorHandler } from "./middlewares/ErrorHandler.js";
 import { pool } from "./utils/DBConnection.js";
 import "dotenv/config";
 import userRouter from "./routes/userRoute.js";
@@ -15,6 +16,9 @@ app.get("/test", (req, res) => {
   pool();
   return;
 });
+
+app.use(ErrorHandler);
+
 app.listen("3000", (_req, _res) => {
   console.log("listening on port 3000");
 });
