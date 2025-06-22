@@ -5,7 +5,7 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "dev": "npx nodemon index.js",
+    "dev": "nodemon index.js",
     "test": "test"
   },
   "author": "anuj kumar kheria",
