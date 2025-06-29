@@ -4,6 +4,7 @@ import { ErrorHandler } from "./middlewares/ErrorHandler.js";
 import { dbInit, pool } from "./utils/DBConnection.js";
 import "dotenv/config";
 import userRouter from "./routes/userRoute.js";
+import tasksRouter from "./routes/tasksRouter.js";
 const app = express();
 
 
