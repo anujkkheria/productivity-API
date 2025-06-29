@@ -11,11 +11,15 @@ router.get("/", (req, res) => {
   });
 });
 
-router.get("/getall", (req, res) => {
+router.get("/get", (req, res) => {
   return res.status(200).send({
     message: "success",
   });
 });
+
+// RESTful
+// /users/get?sort= - get all
+// /users/get/:id - get specific user
 
 router.post("/login", Login);
 router.post("/Signup", Signup);

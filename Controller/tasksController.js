@@ -1,10 +1,16 @@
 import { pool } from "../utils/DBConnection.js";
 
+
+// const TasksQueries  = {
+//     getTasksbyId : `select * from tasks where user`
+// }
+
 const TasksQueries = {
   getTasksbyId: `SELECT * FROM TASKS WHERE user_id= $1`,
   addTasks:
     "INSERT INTO tasks (task_name,user_id,planned_date) VALUES($1,$2,$3) RETURNING *",
 };
+
 
 export const getTasksbyID = async (req, res, next) => {
   const uid = req.params[id];
