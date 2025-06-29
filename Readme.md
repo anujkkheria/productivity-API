@@ -7,17 +7,19 @@
 
 - [ ] Authentication
 
-  - [x] Login Basic (encrypted password)
+  - [x] Login basic (encrypted password)
   - [x] Signup
-  - [ ] Reset Password (proper)
-  - [ ] Login Proper (with session tokens / refresh tokens)
+  - [ ] Reset password (proper)
+  - [ ] Login proper (with session tokens / refresh tokens)
 
 - [ ] CRUD Operations
 
   - [x] Add Tasks
-  - [x] Get All Tasks
-  - [ ] Update Tasks
-  - [ ] Delete Tasks
+  - [x] Get All tasks
+  - [ ] Update tasks
+  - [ ] Delete tasks
+  - [ ] get all users info
+  - [ ] get user info
 
 - [ ] Implement Template Storage System and Usage
 
