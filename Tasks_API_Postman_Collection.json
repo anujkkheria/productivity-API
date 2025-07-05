@@ -1,0 +1,342 @@
+{
+  "info": {
+    "name": "Tasks API Collection",
+    "description": "Complete collection for Tasks API endpoints including CRUD operations, filtering, search, and statistics",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "version": "1.0.0"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:3000/api/tasks",
+      "type": "string"
+    },
+    {
+      "key": "userId",
+      "value": "123",
+      "type": "string"
+    },
+    {
+      "key": "taskId",
+      "value": "1",
+      "type": "string"
+    }
+  ],
+  "item": [
+    {
+      "name": "API Status",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/",
+          "host": ["{{baseUrl}}"],
+          "path": [""]
+        },
+        "description": "Check if the API is running and see all available endpoints"
+      },
+      "response": []
+    },
+    {
+      "name": "Get All Tasks (Admin)",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/all",
+          "host": ["{{baseUrl}}"],
+          "path": ["all"]
+        },
+        "description": "Retrieve all tasks from all users (admin only)"
+      },
+      "response": []
+    },
+    {
+      "name": "Get User Tasks",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/user/{{userId}}",
+          "host": ["{{baseUrl}}"],
+          "path": ["user", "{{userId}}"]
+        },
+        "description": "Get all tasks for a specific user"
+      },
+      "response": []
+    },
+    {
+      "name": "Get Single Task",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/user/{{userId}}/task/{{taskId}}",
+          "host": ["{{baseUrl}}"],
+          "path": ["user", "{{userId}}", "task", "{{taskId}}"]
+        },
+        "description": "Get a specific task by ID"
+      },
+      "response": []
+    },
+    {
+      "name": "Create New Task",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"taskName\": \"Learn Node.js\",\n  \"plannedDate\": \"2024-01-20\",\n  \"description\": \"Complete Node.js course and build a project\",\n  \"priority\": \"high\",\n  \"status\": \"pending\"\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/user/{{userId}}/add",
+          "host": ["{{baseUrl}}"],
+          "path": ["user", "{{userId}}", "add"]
+        },
+        "description": "Create a new task for a user"
+      },
+      "response": []
+    },
+    {
+      "name": "Update Task",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"taskName\": \"Learn Node.js - Updated\",\n  \"plannedDate\": \"2024-01-25\",\n  \"description\": \"Complete Node.js course and build a project - Updated description\",\n  \"priority\": \"medium\",\n  \"status\": \"in_progress\"\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/user/{{userId}}/task/{{taskId}}",
+          "host": ["{{baseUrl}}"],
+          "path": ["user", "{{userId}}", "task", "{{taskId}}"]
+        },
+        "description": "Update an existing task"
+      },
+      "response": []
+    },
+    {
+      "name": "Delete Task",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/user/{{userId}}/task/{{taskId}}",
+          "host": ["{{baseUrl}}"],
+          "path": ["user", "{{userId}}", "task", "{{taskId}}"]
+        },
+        "description": "Delete a task"
+      },
+      "response": []
+    },
+    {
+      "name": "Get Tasks by Status - Pending",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/user/{{userId}}/status/pending",
+          "host": ["{{baseUrl}}"],
+          "path": ["user", "{{userId}}", "status", "pending"]
+        },
+        "description": "Get tasks filtered by status: pending"
+      },
+      "response": []
+    },
+    {
+      "name": "Get Tasks by Status - In Progress",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/user/{{userId}}/status/in_progress",
+          "host": ["{{baseUrl}}"],
+          "path": ["user", "{{userId}}", "status", "in_progress"]
+        },
+        "description": "Get tasks filtered by status: in_progress"
+      },
+      "response": []
+    },
+    {
+      "name": "Get Tasks by Status - Completed",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/user/{{userId}}/status/completed",
+          "host": ["{{baseUrl}}"],
+          "path": ["user", "{{userId}}", "status", "completed"]
+        },
+        "description": "Get tasks filtered by status: completed"
+      },
+      "response": []
+    },
+    {
+      "name": "Get Tasks by Priority - High",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/user/{{userId}}/priority/high",
+          "host": ["{{baseUrl}}"],
+          "path": ["user", "{{userId}}", "priority", "high"]
+        },
+        "description": "Get tasks filtered by priority: high"
+      },
+      "response": []
+    },
+    {
+      "name": "Get Tasks by Priority - Medium",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/user/{{userId}}/priority/medium",
+          "host": ["{{baseUrl}}"],
+          "path": ["user", "{{userId}}", "priority", "medium"]
+        },
+        "description": "Get tasks filtered by priority: medium"
+      },
+      "response": []
+    },
+    {
+      "name": "Get Tasks by Priority - Low",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/user/{{userId}}/priority/low",
+          "host": ["{{baseUrl}}"],
+          "path": ["user", "{{userId}}", "priority", "low"]
+        },
+        "description": "Get tasks filtered by priority: low"
+      },
+      "response": []
+    },
+    {
+      "name": "Search Tasks",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/user/{{userId}}/search?query=documentation",
+          "host": ["{{baseUrl}}"],
+          "path": ["user", "{{userId}}", "search"],
+          "query": [
+            {
+              "key": "query",
+              "value": "documentation"
+            }
+          ]
+        },
+        "description": "Search tasks by name or description"
+      },
+      "response": []
+    },
+    {
+      "name": "Get Tasks by Date Range",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/user/{{userId}}/date-range?startDate=2024-01-01&endDate=2024-01-31",
+          "host": ["{{baseUrl}}"],
+          "path": ["user", "{{userId}}", "date-range"],
+          "query": [
+            {
+              "key": "startDate",
+              "value": "2024-01-01"
+            },
+            {
+              "key": "endDate",
+              "value": "2024-01-31"
+            }
+          ]
+        },
+        "description": "Get tasks within a date range"
+      },
+      "response": []
+    },
+    {
+      "name": "Update Task Status",
+      "request": {
+        "method": "PATCH",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"status\": \"completed\"\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/user/{{userId}}/task/{{taskId}}/status",
+          "host": ["{{baseUrl}}"],
+          "path": ["user", "{{userId}}", "task", "{{taskId}}", "status"]
+        },
+        "description": "Update only the status of a task"
+      },
+      "response": []
+    },
+    {
+      "name": "Get Task Statistics",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/user/{{userId}}/stats",
+          "host": ["{{baseUrl}}"],
+          "path": ["user", "{{userId}}", "stats"]
+        },
+        "description": "Get statistics about user's tasks"
+      },
+      "response": []
+    }
+  ],
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "type": "text/javascript",
+        "exec": [
+          "// Pre-request script to set up any required variables",
+          "console.log('Making request to: ' + pm.request.url);"
+        ]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "type": "text/javascript",
+        "exec": [
+          "// Test script to validate responses",
+          "pm.test('Status code is 200 or 201', function () {",
+          "    pm.expect(pm.response.code).to.be.oneOf([200, 201]);",
+          "});",
+          "",
+          "pm.test('Response has success property', function () {",
+          "    const responseJson = pm.response.json();",
+          "    pm.expect(responseJson).to.have.property('success');",
+          "});",
+          "",
+          "pm.test('Response has message property', function () {",
+          "    const responseJson = pm.response.json();",
+          "    pm.expect(responseJson).to.have.property('message');",
+          "});"
+        ]
+      }
+    }
+  ]
+}
