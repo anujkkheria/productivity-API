@@ -5,6 +5,7 @@ import { dbInit, pool } from './utils/DBConnection.js'
 import 'dotenv/config'
 import userRouter from './routes/userRoute.js'
 import tasksRouter from './routes/tasksRouter.js'
+import subtaskRouter from './routes/subtaskRouter.js'
 const app = express()
 
 async function init() {
@@ -14,6 +15,7 @@ async function init() {
   app.use(logger)
   app.use('/users', userRouter)
   app.use('/tasks', tasksRouter)
+  app.use('/subtasks', subtaskRouter)
   app.get('/', (req, res) => {
     return res.send('ok ${Date}')
   })

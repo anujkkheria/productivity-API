@@ -7,7 +7,6 @@ import {
   updateTask,
   deleteTask,
   getTasksByStatus,
-  getTasksByPriority,
   searchTasks,
   getTasksByDateRange,
   updateTaskStatus,
@@ -30,8 +29,7 @@ router.get('/', (req, res, next) => {
       'PUT /user/:userId/task/:id': 'Update task',
       'DELETE /user/:userId/task/:id': 'Delete task',
       'GET /user/:userId/status/:status': 'Get tasks by status',
-      'GET /user/:userId/priority/:priority': 'Get tasks by priority',
-      'GET /user/:userId/search': 'Search tasks',
+      'GET /user/:userId/search': 'Search tasks by task name',
       'GET /user/:userId/date-range': 'Get tasks by date range',
       'PATCH /user/:userId/task/:id/status': 'Update task status',
       'GET /user/:userId/stats': 'Get task statistics',
@@ -51,7 +49,6 @@ router.delete('/user/:userId/task/:id', deleteTask)
 
 // Filtering and search endpoints
 router.get('/user/:userId/status/:status', getTasksByStatus)
-router.get('/user/:userId/priority/:priority', getTasksByPriority)
 router.get('/user/:userId/search', searchTasks)
 router.get('/user/:userId/date-range', getTasksByDateRange)
 
